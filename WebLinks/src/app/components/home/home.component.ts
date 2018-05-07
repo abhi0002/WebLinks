@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../service/home-service.service';
+import { GetEventService } from '../../service/get-event.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,19 @@ import { HomeService } from '../../service/home-service.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  user: string;
+  cookieValue = 'UNKNOWN';
 
-  constructor() { }
+  constructor(private getEvent: GetEventService , private cookieService: CookieService ) { }
 
-  ngOnInit() {
+  getAllData() {
+    console.log('Get home Function');
+    this.getEvent.getData('https://jsonplaceholder.typicode.com/users');
   }
-
+  ngOnInit(): void {
+      this.cookieService.set( 'Test', 'Hello World' );
+      this.cookieValue = this.cookieService.get('Test');
+      console.log('Hello Home ' + this.getEvent.getData('https://jsonplaceholder.typicode.com/users'));
+      this.getAllData();
+    }
 }

@@ -1,0 +1,22 @@
+<div class="logincontent">
+  <div class="loginheading">
+    Login
+  </div>
+<form #f="ngForm" noValidate name= "loginForm">
+  <label for="txtUserName">Username:</label>
+  <input class="form-control" type="text" name="txtUserName" required />
+
+  <label for="txtPassword">Password:</label>
+  <input class="form-control" type="password" name="txtPassword" required />
+
+  <div class="loginremember">
+    <input type="checkbox" id="chbRemember" name="chbRemember" />
+    <label class="check" for="chbRemember">Remember me next time</label>
+    <button type="submit" class="loginbtn">
+      <a class="nav-link" href="#" routerLink="/events">LogIn</a>
+    </button>
+  </div>
+</form>
+</div>
+<button (click)="checkdata()">Click</button>
+

@@ -1,29 +1,55 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule , Validators} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
+
+
+// Component Imports
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { HomeComponent } from './components/home/home.component';
-import { EventsComponent } from './components/events/events.component';
 import { UsersComponent } from './components/users/users.component';
+import { EventsComponent } from './components/events/events.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeServiceService } from './service/home-service.service';
+
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+// Service Imports
+import { CookieService } from 'ngx-cookie-service';
+import { GetEventService } from './service/get-event.service';
+import { ServerService } from './service/server.service';
 
 
+
+const  appRoutes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'events', component: EventsComponent}
+  // {path: 'app-clients-details', component: ClientsDetailsComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    HomeComponent,
-    EventsComponent,
     UsersComponent,
+    EventsComponent,
+    EventsComponent,
+    LoginComponent,
+    HomeComponent,
     HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+    ],
+  providers: [
+    CookieService,
+    GetEventService,
+    ServerService
   ],
-  providers: [HomeServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

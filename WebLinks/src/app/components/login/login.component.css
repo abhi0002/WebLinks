@@ -84,7 +84,7 @@ input[type=checkbox]
     background-color: #07A8C3;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#07A8C3), to(#6EE4E8));
     background-image: -moz-linear-gradient(top left 90deg, #07A8C3 0%, #6EE4E8 100%);
-    background-image: linear-gradient(top left 90deg, #07A8C3 0%, #6EE4E8 100%);
+    /* background-image: linear-gradient(top left 90deg, #07A8C3 0%, #6EE4E8 100%); */
     border-radius: 30px;
     border: 1px solid #07A8C3;
     cursor: pointer;
@@ -93,5 +93,5 @@ input[type=checkbox]
 {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
     background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
-    background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+    /* background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%); */
 }

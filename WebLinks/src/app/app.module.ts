@@ -19,14 +19,17 @@ import { HomeComponent } from './components/home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { GetEventService } from './service/get-event.service';
 import { ServerService } from './service/server.service';
-
-
+import { PagerService } from './service/pager.service';
+import { TableComponent } from './components/table/table.component';
+import { EventEmiterSerivce } from './service/event-emiter.service';
+import { CookieModule } from 'ngx-cookie';
+import { MyCookiesService } from './service/my-cookies.service';
 
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'events', component: EventsComponent}
-  // {path: 'app-clients-details', component: ClientsDetailsComponent }
+  {path: 'events', component: EventsComponent},
+  {path: 'table', component: TableComponent }
 ];
 @NgModule({
   declarations: [
@@ -36,18 +39,23 @@ const  appRoutes: Routes = [
     EventsComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    CookieModule.forRoot()
     ],
   providers: [
     CookieService,
     GetEventService,
-    ServerService
+    ServerService,
+    PagerService,
+    EventEmiterSerivce,
+    MyCookiesService
   ],
   bootstrap: [AppComponent],
 

@@ -1,0 +1,16 @@
+<h4>Table component</h4>
+
+<!-- <button (click)= "getDataForTable();">click for data</button> -->
+
+<div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Id</th>
+    </tr>
+    <tr *ngFor="let l of list">
+      <td> {{l.name}} </td>
+      <td> {{l.id}} </td>
+    </tr>
+  </table>
+</div>

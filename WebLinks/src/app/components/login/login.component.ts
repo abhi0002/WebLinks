@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { GetEventService } from '../../service/get-event.service';
-import {map} from 'rxjs/operators/map';
-import {Observable} from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { MyCookiesService } from '../../service/my-cookies.service';
 
 
 @Component({
@@ -12,22 +11,39 @@ import {Observable} from 'rxjs/Observable';
 })
 export class LoginComponent implements OnInit {
   users: any;
-  constructor(private getEvent: GetEventService) {}
+  userName: string;
+  password: string;
+
+  constructor(
+        private getEvent: GetEventService , private router: Router , private _cookieService: MyCookiesService ) { }
 
   ngOnInit() {
-      this.getEvent.getData('https://jsonplaceholder.typicode.com/users')
-        .subscribe((response) => {
-        this.users = response;
-        console.log(this.users);
-        this.checkdata();
-      });
-      // this.checkdata();
+
   }
 
-  checkdata() {
-    for (let index = 0; index < this.users.length; index++) {
-      const element = this.users[index];
-      console.log(element);
-    }
+  getLogInData(id , password) {
+    this.getEvent.getData('http://172.16.0.119:8080/public/login?email=' + id + '&password=' + password )
+    // this.getEvent.getData('http://172.16.0.119:8080/public/login?email=test@mailinator.com&password=Abc@1234')
+
+    .subscribe((response) => {
+              this.users = response;
+              console.log('logIn');
+              console.log(this.users);
+
+              if (this.users.status === 200) {
+                this.router.navigate(['table']);
+                this.setCookieValue( id , password);
+              } else {
+              console.log('Wrong Credentials');
+              }
+    });
+  }
+  setCookieValue(key , value) {
+    this._cookieService.putCookie(key , value);
+  }
+
+  getCookieValue(key) {
+  console.log(    this._cookieService.getCookie(key));
+
   }
 }

@@ -3,8 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule , Validators} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { ChartsModule } from 'ng2-charts';
 
 
 // Component Imports
@@ -25,6 +24,7 @@ import { EventEmiterSerivce } from './service/event-emiter.service';
 import { CookieModule } from 'ngx-cookie';
 import { MyCookiesService } from './service/my-cookies.service';
 
+
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -41,13 +41,15 @@ const  appRoutes: Routes = [
     HomeComponent,
     HeaderComponent,
     TableComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    ChartsModule
     ],
   providers: [
     CookieService,

@@ -2,25 +2,25 @@
   <div class="loginheading">
     Login
   </div>
-<form #f="ngForm" noValidate name= "loginForm">
-  <label for="txtUserName">Username:</label>{{userName}}
-  <input #txtUserName class="form-control" type="text" name="txtUserName"  [(ngModel)]="userName"required />
+  <form #f="ngForm" noValidate name="loginForm">
+    <label for="txtUserName">Username:</label>{{userName}}
+    <input #txtUserName class="form-control" type="text" name="txtUserName" [(ngModel)]="userName" required />
 
-  <label for="txtPassword">Password:</label>{{password}}
-  <input #txtPassword class="form-control" type="password" name="txtPassword" [(ngModel)]="password"required />
+    <label for="txtPassword">Password:</label>{{password}}
+    <input #txtPassword class="form-control" type="password" name="txtPassword" [(ngModel)]="password" required />
 
-  <div class="loginremember">
-    <input type="checkbox" id="chbRemember" name="chbRemember" />
-    <label class="check" for="chbRemember">Remember me next time</label>
-    <!-- <button type="submit" class="loginbtn" (click)= "getLogInData(userName, password)" >Submit</button> -->
-     <button type="submit" class="loginbtn" (click)= "getLogInData(userName, password)" >Submit</button>
-  </div>
-</form>
+    <div class="loginremember">
+      <input type="checkbox" id="chbRemember" name="chbRemember" />
+      <label class="check" for="chbRemember">Remember me next time</label>
+      <!-- <button type="submit" class="loginbtn" (click)= "getLogInData(userName, password)" >Submit</button> -->
+      <button type="submit" class="loginbtn" (click)="getLogInData(userName, password)">Submit</button>
+    </div>
+  </form>
 </div>
 <!-- <button (click)="checkdata()">Click</button> -->
-<button><a class="nav-link" href="" routerLink="/table">ClickTable</a>
+<button>
+  <a class="nav-link" href="" routerLink="/table">ClickTable</a>
 </button>
 <button (click)="setCookieValue()"> Set</button>
-<button (click)="getCookieValue('name')" > Get </button>
-
+<button (click)="getCookieValue('name')"> Get </button>
 

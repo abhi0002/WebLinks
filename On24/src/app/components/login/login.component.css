@@ -1,0 +1,43 @@
+.div1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url('/assets/NewsletterSignup-Background.jpg');
+    width: 50%;
+}
+.div2 {
+    width: 50%;
+    background: rgb(250, 250, 250);
+}
+.clearPadding{
+      padding: 0px;
+      margin: 0px;
+}
+.addPadding {
+  padding-bottom: 100px;
+  padding-top: 100px;
+  padding-right: 30px;
+  padding-left: 30px;
+  height: -webkit-fill-available;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+.addBox {
+  width: 340px;
+  height: 513px;
+}
+.center {
+  margin: auto;
+  width: 90%;
+  /* border: 3px solid #73AD21; */
+
+}
+
+.clearMargin {
+  margin-right: 0px;
+  margin-left: 0px;
+  height: -webkit-fill-available;
+}

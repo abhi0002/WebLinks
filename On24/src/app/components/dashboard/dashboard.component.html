@@ -1,0 +1,62 @@
+<div class="row clearMargin">
+  <div class=" col-sm-6 clearPadding">
+    <div class="addBottomPadding">
+      <h2>Events</h2>
+    </div>
+    <div class="addTopPadding" *ngIf="flagEvent">
+      <canvas baseChart [data]="eventPieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event, 'http://http://172.16.0.119:8080/event?status=true')"></canvas>
+    </div>
+  </div>
+  <div class="col-sm-6 clearPadding">
+    <div class="addBottomPadding">
+      <h2>Registrants</h2>
+    </div>
+    <div class="addTopPadding" *ngIf="flagUser">
+      <canvas baseChart [data]="usersPieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event, 'http://172.16.0.119:8080/registrant?status=true')"></canvas>
+    </div>
+  </div>
+</div>
+
+
+
+<h2>Modal Example</h2>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div *ngIf="modalFlag" class="modal" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>weblinkEventId</th>
+              <th>on24EventId</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let elem of successRawEvents.responseData">
+            <tr>
+              <td>{{elem.id}}</td>
+              <td>{{elem.weblinkEventId}}</td>
+              <td>{{elem.on24EventId}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

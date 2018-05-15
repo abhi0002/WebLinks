@@ -1,0 +1,38 @@
+<div class="row clearMargin">
+  <div class="div1 col-lg-7  clearPadding"></div>
+  <div class="div2 col-lg-5 float-left clearPadding">
+    <div class="addPadding">
+      <div class="addBox center">
+        <div class="container">
+          <h1 class="text-center login-title">Sign in</h1>
+          <h6 class="text-center login-title">to continue</h6>
+          <div class="account-wall">
+            <img class="profile-img img" src="/assets/intranet-login-logo-300.png" alt="Log inImage">
+            <div style="padding: 40px">
+              <form novalidate class="form-signin">
+                <input #emailId type="text" class="form-control" placeholder="Email" name="emailId" [(ngModel)]="email" required autofocus>
+                <input #passwd type="password" class="form-control" placeholder="passwd" name= "password" [(ngModel)]="pass" required>
+                <div style="padding: 20px">
+                  <button (click)="getLogInData(email , pass)" class="btn btn-lg btn-primary btn-block" type="submit">
+                    Sign in</button>
+                </div>
+                <div style="padding-top: 20px" class="row">
+                  <div style="width: 50%;">
+                    <label style="font-size: 15px;
+                          " class="checkbox pull-left">
+                      <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                  </div>
+                  <div style="width: 50%;text-align: right;">
+                    <a href="#">Forgot password?</a>
+                    <span class="clearfix"></span>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

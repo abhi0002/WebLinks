@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewEncapsulation } from '@angular/core';
 import { GetEventService } from '../../service/get-event.service';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
+// import {Observable} from 'rxjs/Observable';
 import { EventEmiterSerivce } from '../../service/event-emiter.service';
 import * as d3 from 'd3';
 

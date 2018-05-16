@@ -4,6 +4,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+
+// import { Observable, of } from 'rxjs';
+// import 'rxjs/add/operator/map';
+
 
 // Components Imports
 import { AppComponent } from './app.component';
@@ -17,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetHttpService } from './services/get-http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartsModule } from 'ng2-charts';
+import { PagerService } from './services/pager.service';
 
 // Router Path
 const  appRoutes: Routes = [
@@ -39,11 +46,14 @@ const  appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [
     GetHttpService,
-    CookieService
+    CookieService,
+    PagerService
   ],
   bootstrap: [AppComponent]
 })

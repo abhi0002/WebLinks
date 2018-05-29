@@ -24,12 +24,19 @@ import { GetHttpService } from './services/get-http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ChartsModule } from 'ng2-charts';
 import { PagerService } from './services/pager.service';
+import { LogOutHeaderComponent } from './log-out-header/log-out-header.component';
+import { CanDeactivateGuardLogInService } from './services/can-deactivate-guard-log-in.service';
 
 // Router Path
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'logout', component: LoginComponent},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canDeactivate: [CanDeactivateGuardLogInService]
+  }
 ];
 
 @NgModule({
@@ -38,7 +45,8 @@ const  appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    LogOutHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +61,8 @@ const  appRoutes: Routes = [
   providers: [
     GetHttpService,
     CookieService,
-    PagerService
+    PagerService,
+    CanDeactivateGuardLogInService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,7 @@
           <div class="account-wall">
             <img class="profile-img img" src="/assets/intranet-login-logo-300.png" alt="Log inImage">
             <div style="padding: 40px">
-              <form novalidate class="form-signin">
+              <form novalidate class="form-signin" ng-form="f" (ngSubmit)="onSignin('f')">
                 <input #emailId type="text" class="form-control" placeholder="Email" name="emailId" [(ngModel)]="email" required autofocus>
                 <input #passwd type="password" class="form-control" placeholder="passwd" name= "password" [(ngModel)]="pass" required>
                 <div style="padding: 20px">

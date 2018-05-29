@@ -41,8 +41,6 @@ export class PaginateService {
       this.currentPage = 0;
     }
   }
-
-
   public setLastPage(dataCount) {
     if (dataCount % this.limitTo === 0) {
       this.lastPage = dataCount / this.limitTo;

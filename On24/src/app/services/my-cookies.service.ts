@@ -11,12 +11,16 @@ export class MyCookiesService {
   getCookies(key) {
    return this.mycookie.get(key);
   }
-
   setCookies(key , value) {
     this.mycookie.set(key , value);
   }
-
+  getCookie(key) {
+    return this.mycookie.get(key);
+  }
   getAllCookies() {
     return this.mycookie.getAll();
+  }
+  deleteCookie() {
+    return this.mycookie.deleteAll();
   }
 }

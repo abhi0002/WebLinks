@@ -1,6 +1,6 @@
 import {GetHttpService} from '../../services/get-http.service';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyCookiesService } from '../../services/my-cookies.service';
 
@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+  }
+  onSignin(form: NgForm) {
+
   }
 
   getLogInData(id , password) {

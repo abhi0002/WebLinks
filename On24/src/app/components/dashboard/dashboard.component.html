@@ -1,3 +1,4 @@
+<app-log-out-header></app-log-out-header>
 <div class="row clearMargin">
   <div class=" col-sm-6 clearPadding">
     <div class="addBottomPadding">
@@ -21,17 +22,43 @@
   </div>
 </div>
 <!-- Modal -->
-<div *ngIf="modalSuccessFlag && modalFailFlag" class="modal" id="eventModal" role="dialog">
-  <div class="modal-dialog">
+<div #eventsm *ngIf="modalSuccessFlag && modalFailFlag" class="modal" id="eventModal" role="dialog">
+  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Successful Events</h4>
+        <h4 class="modal-title">Events</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <mat-tab-group>
-          <mat-tab label="Tab 1">
+        <mat-tab-group (selectedTabChange)="onLinkClick($event)" >
+          <mat-tab label="Success">
+
+            <div class="filter" style="margin-top:15px">
+              <form class=" form-inline ">
+                <!-- REFRESH -->
+                <div class="form-group addsidePadding">
+                  <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="form-group addsidePadding">
+                  <label for="sel1">Show &nbsp;</label>
+                  <select name="selection" [(ngModel)]="selectedLimit" class="form-control ">
+                    <option id= "opt" *ngFor="let c of limitTo" [value]="c">
+                      {{c}}
+                    </option>
+                  </select>
+                </div>
+                <!-- SEARCH -->
+                <div class="form-group addsidePadding">
+                  <label>&nbsp;Search&nbsp;</label>
+                  <!-- <input class="form-control srchIn" [(ng-model)]="searchTerm" type="search" placeholder="Search" maxlength="40" /> -->
+                  <input class="form-control srchIn"  type="search" placeholder="Search" maxlength="40" />
+
+                </div>
+              </form>
+              <!-- </div> -->
+            </div>
+
             <table class="table">
               <thead>
                 <tr>
@@ -40,7 +67,9 @@
                   <th scope="col">on24EventId</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let elem of successRawEvents.responseData | slice:0:5">
+              <!-- <tbody *ngFor="let elem of successRawEvents.responseData | slice:0:selectedLimit |eventFilter: searchTerm"> -->
+                  <tbody *ngFor="let elem of successRawEvents.responseData | slice:0:selectedLimit">
+
                 <tr>
                   <td>{{elem.id}}</td>
                   <td>{{elem.weblinkEventId}}</td>
@@ -66,7 +95,32 @@
               </ul>
             </div>
           </mat-tab>
-          <mat-tab label="Tab 2">
+          <mat-tab label="Fail">
+            <div class="filter" style="margin-top:15px">
+              <form class=" form-inline ">
+                <!-- REFRESH -->
+                <div class="form-group addsidePadding">
+                  <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+
+                </div>
+
+                <!-- PAGINATION -->
+                <div ng-if="vm.searchFlag" class="form-group addsidePadding">
+                  <label for="sel1">Show&nbsp;</label>
+                  <select name="selection" [(ngModel)]="selectedLimit" class="form-control ">
+                      <option id= "opt" *ngFor="let c of limitTo" [value]="c">
+                        {{c}}
+                      </option>
+                    </select>
+                </div>
+                <!-- SEARCH -->
+                <div class="form-group addsidePadding">
+                  <label>&nbsp;Search&nbsp;</label>
+                  <input class="form-control srchIn" ng-model="searchContent" type="search" placeholder="Search" maxlength="40" />
+                </div>
+              </form>
+              <!-- </div> -->
+            </div>
             <table class="table">
               <thead>
                 <tr>
@@ -75,7 +129,7 @@
                   <th scope="col">on24EventId</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let elem of failRawEvents.responseData ">
+              <tbody *ngFor="let elem of failRawEvents.responseData | slice : 0:selectedLimit">
                 <tr>
                   <td>{{elem.id}}</td>
                   <td>{{elem.weblinkEventId}}</td>
@@ -112,16 +166,41 @@
 </div>
 
 <div *ngIf="modalSuccessFlag && modalFailFlag" class="modal" id="registrantModal" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Successful Events</h4>
+        <h4 class="modal-title">Registrants</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <mat-tab-group>
-          <mat-tab label="Tab 1">
+          <mat-tab label="Success">
+
+            <div class="filter" style="margin-top:15px">
+              <form class=" form-inline ">
+                <!-- REFRESH -->
+                <div class="form-group addsidePadding">
+                  <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+
+                </div>
+
+                <!-- PAGINATION -->
+                <div ng-if="vm.searchFlag" class="form-group addsidePadding">
+                  <label for="sel1">Show&nbsp;</label>
+                  <select id="sell" class="form-control sm-select">
+                    <option value="limit">Select</option>
+                  </select>
+                </div>
+                <!-- SEARCH -->
+                <div class="form-group addsidePadding">
+                  <label>&nbsp;Search&nbsp;</label>
+                  <input class="form-control srchIn" ng-model="searchContent" type="search" placeholder="Search" maxlength="40" />
+                </div>
+              </form>
+              <!-- </div> -->
+            </div>
+
             <table class="table">
               <thead>
                 <tr>
@@ -156,7 +235,32 @@
               </ul>
             </div>
           </mat-tab>
-          <mat-tab label="Tab 2">
+          <mat-tab label="Fail">
+
+            <div class="filter" style="margin-top:15px">
+              <form class=" form-inline ">
+                <!-- REFRESH -->
+                <div class="form-group addsidePadding">
+                  <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+
+                </div>
+
+                <!-- PAGINATION -->
+                <div ng-if="vm.searchFlag" class="form-group addsidePadding">
+                  <label for="sel1">Show&nbsp;</label>
+                  <select id="sell" class="form-control sm-select">
+                    <option value="limit">Select</option>
+                  </select>
+                </div>
+                <!-- SEARCH -->
+                <div class="form-group addsidePadding">
+                  <label>&nbsp;Search&nbsp;</label>
+                  <input class="form-control srchIn" ng-model="searchContent" type="search" placeholder="Search" maxlength="40" />
+                </div>
+              </form>
+              <!-- </div> -->
+            </div>
+
             <table class="table">
               <thead>
                 <tr>
